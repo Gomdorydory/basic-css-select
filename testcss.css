@@ -1,0 +1,35 @@
+/* input요소 중 id값이 같은 요소만 선택 */
+input[id="menuicon"] {
+  display:none;
+}
+
+/* +는 인접요소 선택자.  */
+input[id="menuicon"] + label {
+  display:block;  /* div와 같은 bolck요소를 선언 */
+  width: 60px; /* 요소의 세로 값 */
+  height: 40px; /* 요소의 가로 값 */
+  position: relative; /* absolute의 기준점 */
+  cursor: pointer; /* 마우스 커서를 포인터로 밖는 속성값 */
+}
+
+input[id="menuicon"] + label span { /* 3개의 span 일괄 선택 */
+  display:block; /* div와 같은 block요소를 선언 */
+  position: absolute; /* 포토샵의 레이어와 같은 속성 */
+  width: 100%; /* 요소의 가로값 */
+  height: 5px; /* 요소의 세로 값 */
+  border-radius: 30px; /* 꿀팁 ; 정사각형에서 이 값을 100%로 하면 원이 됨 */
+  background: #000; 
+  transition: all .35s; /* 애니메이션 효과 */
+}
+input[id="menuicon"] + label span:nth-child(1) { /* 각 요소를 순차적으로 선택 */
+  top: 0; /* position:absolute의 정렬위치값 = 상단 */
+}
+
+input[id="menuicon"] + label span:nth-child(2) { /* 각 요소를 순차적으로 선택 */
+  top: 50%; /* position:absolute의 정렬위치값 = 중앙 */
+  transform:translateY(-50%); /* 요소를 Y축으로 값만큼 이동 : 이게 없으면 span그림의 상단을 중심으로 정렬되기 때문에 그림의 중앙중심으로 만들기 위해서임.*/
+}
+
+input[id="menuicon"] + label span:nth-child(3) { /* 각 요소를 순차적으로 선택 */
+  bottom: 0; /* position:absolute의 정렬위치값 = 하단 */
+}

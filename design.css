@@ -1,0 +1,103 @@
+* {
+  margin:0;
+  padding:0;
+  height: 100%;
+}
+
+header {
+  display:flex;
+  border: 1px solid;
+  background-color: rgb(255, 255, 255);
+  width:100%;
+  height: 5rem;
+  color: black;
+  text-align:center;
+  line-height: 5rem;
+}
+
+/* input요소 중 id값이 같은 요소만 선택 */
+header input[id="menuicon"] {
+  display:none;
+}
+
+/* +는 인접요소 선택자.  */
+header input[id="menuicon"] + label {
+  display:block;  /* div와 같은 bolck요소를 선언 */
+  position: relative; /* absolute의 기준점 */
+  margin: 1rem;
+  width: 60px; /* 요소의 가로 값 */
+  height: 40px; /* 요소의 세로 값 */
+  /* right:0;
+  top:calc(50% -25px); 정확한 위치를 위해 버튼의 높이의 반을 뺌. */
+  cursor: pointer; /* 마우스 커서를 포인터로 밖는 속성값 */
+  z-index:2; 
+}
+
+header input[id="menuicon"] + label span { /* 3개의 span 일괄 선택 */
+  display:block; /* div와 같은 block요소를 선언 */
+  position: absolute; /* 포토샵의 레이어와 같은 속성 */
+  width: 100%; /* 요소의 가로값 */
+  height: 5px; /* 요소의 세로 값 */
+  border-radius: 30px; /* 꿀팁 ; 정사각형에서 이 값을 100%로 하면 원이 됨 */
+  background: #000; 
+  transition: all .35s; /* 애니메이션 효과 */
+}
+header input[id="menuicon"] + label span:nth-child(1) { /* 각 요소를 순차적으로 선택 */
+  top: 0; /* position:absolute의 정렬위치값 = 상단 */
+}
+
+header input[id="menuicon"] + label span:nth-child(2) { /* 각 요소를 순차적으로 선택 */
+  top: 50%; /* position:absolute의 정렬위치값 = 중앙 */
+  transform:translateY(-50%); /* 요소를 Y축으로 값만큼 이동 : 이게 없으면 span그림의 상단을 중심으로 정렬되기 때문에 그림의 중앙중심으로 만들기 위해서임.*/
+}
+
+header input[id="menuicon"] + label span:nth-child(3) { /* 각 요소를 순차적으로 선택 */
+  bottom: 0; /* position:absolute의 정렬위치값 = 하단 */
+}
+
+/* menuicon 아이디 값을 갖고 있는 input 요소가 check 되었을 때 */
+header input[id="menuicon"]:checked + label span:nth-child(1) {
+  top:50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+header input[id="menuicon"]:checked + label span:nth-child(2) {
+  opacity: 0;
+}
+header input[id="menuicon"]:checked + label span:nth-child(3) {
+  bottom:50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+/* input + label + div {} 인풋이 체크가 되기전 div에 스타일을 줄때 */
+/* input:checked + label + div {} 인풋이 체크가 되면 div에 변화할 스타일 값을 줄때 */
+/* 대괄호는 속성선택자임 */
+
+/*  */
+div[class="sidebar"] {
+  width:300px;
+  height:100%;
+  background:#ffffff;
+  position:fixed; /* 포토샵의 레이어와 같은 속성 스크롤해도 그 위치에 고정되어있음. */
+  top:0;
+  left:0;
+  left:-300px; /* 사이드 바의 넓이 값. 처음엔 안보이게 해줌 */
+  z-index:1; /*position 값의 우선순위. 메뉴가 위로 올라와서 좋음. */
+  transition:all .35s;  /* 변화 값에 따른 모션 */
+}
+
+input[id="menuicon"]:checked + label + div {
+  left:0; /* 사이드 바가 화면 안으로 들어오게 됨. */
+}
+
+#title {
+  width: 80%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  width: 10rem;
+  height: 2rem;
+}
